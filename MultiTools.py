@@ -1,3 +1,4 @@
+import os 
 required_imports = [
     'getpass','colorama', 'pypresence'
 ]
@@ -17,7 +18,6 @@ if missing_imports:
     print("Missing imports installed successfully!")
 else:
     print("All required imports are already installed.")
-import os 
 import time
 import getpass
 user = getpass.getuser()
