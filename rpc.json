@@ -1,0 +1,20 @@
+{
+    "RBN": {
+      "bot_id": "1143452676718333983",
+      "state": "State",
+      "details": "details",
+      "large_image": "a",
+      "large_text": "large_text",
+      "small_image": "a",
+      "small_text": "small_text"
+    },
+    "RBNs": {
+      "bot_id": "1143452676718333983",
+      "state": "yeah",
+      "details": "no",
+      "large_image": "a",
+      "large_text": "asd",
+      "small_image": "a",
+      "small_text": "zxc"
+    }
+}
