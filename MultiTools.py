@@ -24,6 +24,7 @@ user = getpass.getuser()
 from colorama import init as colorama_init
 from colorama import Fore
 from colorama import Style
+import json
 import random
 from pypresence import Presence
 
@@ -36,7 +37,7 @@ thec = fr"C:\Users\{user}"
 
 
 t1 = f"{Fore.WHITE}================================="
-t2 = f"         {Fore.RED}R B N"
+t2 = f"         {Fore.MAGENTA}R B N"
 t3 = f"         MultiTools"
 t4 = f"{Fore.WHITE}================================={Fore.WHITE}"
 t5 = "Sections 1 - 4"
@@ -118,24 +119,35 @@ def file(thec):
         os.makedirs(f"C:\\Users\\{user}\\{pathh}\\{FileName}", exist_ok=True)
 
 def hi():
-    iad = input("Bot Id: ")
+    with open("rpc.json", "r") as file:
+        db = json.load(file)
+
+    print("You're Config's:")
+    for key in db:
+        print(f"- {key}")
+
+    selected = input("Choose a Config: ")
+
+    if selected not in db:
+        print(f"{Fore.RED}Config '{selected}' Not Found")
+        return
+
+    config = db[selected]
+
+    iad = config["bot_id"]
     RPC = Presence(iad)
     RPC.connect()
-    s = input("State: ")
-    d = input("Details: ")
-    l = input("Large Image: ")
-    lt = input("Large Text: ")
-    si = input("Small Image: ")
-    st = input("Small Text: ")
+
     RPC.update(
-    state=s,
-    details=d,
-    large_image=l,
-    large_text=lt,
-    small_image=si,
-    small_text=st
+        state=config["state"],
+        details=config["details"],
+        large_image=config["large_image"],
+        large_text=config["large_text"],
+        small_image=config["small_image"],
+        small_text=config["small_text"]
     )
-    print(f"{Fore.RED}Ctrl + C To Close And Stops RPC{Fore.WHITE}")
+
+    print(f"{Fore.RED}Ctrl + C To Close And Stop RPC{Fore.WHITE}")
     while True:
         pass
 def hoi():
